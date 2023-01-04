@@ -14,7 +14,8 @@ class CanBus:
         try:
             self.bus = can.interface.Bus(
                 channel=self.interface,
-                bustype='socketcan'
+                bustype='socketcan',
+                bitrate=20000
             )
 
             return self
@@ -26,11 +27,14 @@ class CanBus:
         self.notifier.stop()
         self.bus.shutdown()
 
+    def print_message(self, msg: can.Message) -> None:
+        print(msg)
+
     def send(self, data):
         msg = can.Message(
             arbitration_id=self.sender,
             data=data,
-            extended_id=False
+            is_extended_id=False
         )
         self.bus.send(msg)
 
