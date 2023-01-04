@@ -16,9 +16,10 @@ python-can = "*"
 pyyaml = "*"
 mysql-connector = "*"
 python-dotenv = "*"
+requests = "*"
 
 [requires]
-python_version = "3.7"
+python_version = "3.9"
 
 [scripts]
 lint = "flake8"
