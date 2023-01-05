@@ -1,5 +1,5 @@
 import pytest
-from sepicker.elster.elster_frame import ElsterFrame
+from canpicker.elster.elster_frame import ElsterFrame
 
 
 class TestElsterFrame:
