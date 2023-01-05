@@ -3,7 +3,7 @@ import logging
 
 from .elster.elster import Elster
 from .interface.can_bus import CanBus
-from .datastore.mysql import Mysql as Datastore
+from .datasinks.mysql import Mysql as Datastore
 from .config import (
     CAN as CAN_CONFIG,
     DATA,
