@@ -4,6 +4,7 @@ import logging
 from .elster.elster import Elster
 from .interface.can_bus import CanBus
 from .datasinks.mysql import Mysql as Datastore
+from .datasinks.http import Http
 from .config import (
     CAN as CAN_CONFIG,
     DATA,
@@ -42,8 +43,8 @@ def main():
             db.save(elster.values)
 
     if HTTP_CONFIG['url_template']:
-        # Create HTTP requests for all values
-        pass
+        with Http(**HTTP_CONFIG) as http:
+            http.send(elster.values)
 
     if CONSOLE_OUT:
         print(elster.values)
