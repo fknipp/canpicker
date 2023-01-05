@@ -23,5 +23,5 @@ python_version = "3.9"
 
 [scripts]
 lint = "flake8"
-start = "python3 -m sepicker"
+start = "python3 -m canpicker"
 test = "pytest"
