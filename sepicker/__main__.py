@@ -8,7 +8,9 @@ from .config import (
     CAN as CAN_CONFIG,
     DATA,
     DATABASE as DATABASE_CONFIG,
-    LOG_LEVEL
+    LOG_LEVEL,
+    CONSOLE_OUT,
+    HTTP as HTTP_CONFIG
 )
 
 logging.basicConfig(level=LOG_LEVEL)
@@ -34,10 +36,17 @@ def main():
                 logging.error('TimeoutError: Not all data received.')
                 break
 
-    # Save result
-    with Datastore(**DATABASE_CONFIG) as db:
-        db.save(elster.values)
+    if DATABASE_CONFIG['database']:
+        # Save result
+        with Datastore(**DATABASE_CONFIG) as db:
+            db.save(elster.values)
 
+    if HTTP_CONFIG['url_template']:
+        # Create HTTP requests for all values
+        pass
+
+    if CONSOLE_OUT:
+        print(elster.values)
 
 if __name__ == '__main__':
     main()
