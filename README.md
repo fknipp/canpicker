@@ -6,12 +6,6 @@
   Collect data from the CAN bus using the Elster protocol
 </p>
 
-<p align="center">
-  <a href="https://dependabot.com">
-    <img alt="Dependabot Status" src="https://api.dependabot.com/badges/status?host=github&repo=fknipp/canpicker">
-  </a>
-</p>
-
 ## Table of Contents
 
 * [Requirements](#requirements)
