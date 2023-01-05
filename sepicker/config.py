@@ -12,7 +12,7 @@ CONFIG_FILE = 'config.yml'
 
 def _exists(key, value):
     if value is None:
-        LOGGER.error('Configuration value for "{key}" not found.')
+        LOGGER.error(f'Configuration value for "{key}" not found.')
         sys.exit(1)
 
     return value
@@ -42,8 +42,15 @@ CAN = yaml_config['can']
 DATA = yaml_config['data']
 LOG_LEVEL = os.getenv('LOG_LEVEL', 'INFO')
 DATABASE = {
-    'user': _exists('DB_USER', os.getenv('DB_USER')),
-    'password': _exists('DB_PASSWORD', os.getenv('DB_PASSWORD')),
-    'host': _exists('DB_HOST', os.getenv('DB_HOST')),
-    'database': _exists('DB_DATABASE', os.getenv('DB_DATABASE'))
+    'user': os.getenv('DB_USER'),
+    'password': os.getenv('DB_PASSWORD'),
+    'host': os.getenv('DB_HOST'),
+    'database': os.getenv('DB_DATABASE')
 }
+HTTP = {
+    'url_template': os.getenv('HTTP_URL_TEMPLATE'),
+    'username': os.getenv('HTTP_USERNAME'),
+    'password': os.getenv('HTTP_PASSWORD')
+}
+CONSOLE_OUT = os.getenv('CONSOLE_OUT')
+
