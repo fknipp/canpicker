@@ -1,22 +1,15 @@
 <h1 align="center">
-  sepicker
+  canpicker
 </h1>
 
 <p align="center">
-  📊 Monitoring for the STIEBEL ELTRON Heat Pump
+  Collect data from the CAN bus using the Elster protocol
 </p>
 
 <p align="center">
-  <a href="https://github.com/danielbayerlein/sepicker/actions">
-    <img alt="Actions Status" src="https://github.com/danielbayerlein/sepicker/workflows/CI/badge.svg">
-  </a>
   <a href="https://dependabot.com">
-    <img alt="Dependabot Status" src="https://api.dependabot.com/badges/status?host=github&repo=danielbayerlein/sepicker">
+    <img alt="Dependabot Status" src="https://api.dependabot.com/badges/status?host=github&repo=fknipp/canpicker">
   </a>
-</p>
-
-<p align="center">
-  <img src="https://user-images.githubusercontent.com/457834/76162079-241b7c80-613a-11ea-9f18-1c380d588635.png" width="600" alt="Dashboard">
 </p>
 
 ## Table of Contents
@@ -39,24 +32,28 @@
 
 ## Requirements
 
-* [Python 3.7](https://www.python.org)
+* [Python 3.9](https://www.python.org)
 * [MySQL](https://www.mysql.com/)
 * [Grafana](https://grafana.com/) *(optional)*
 * [Raspberry Pi](https://www.raspberrypi.org) + [CANable](https://canable.io) *(or similar devices)*
 
 ## Installation
 
-* Download the [latest release](https://github.com/danielbayerlein/sepicker/releases/latest/download/package.zip)
+* Download the [latest version](https://github.com/fknipp/canpicker/archive/refs/heads/main.zip)
   ```bash
-  wget https://github.com/danielbayerlein/sepicker/releases/latest/download/package.zip
+  wget https://github.com/fknipp/canpicker/archive/refs/heads/main.zip
   ```
 * Unzip the package
   ```bash
-  unzip package.zip
+  unzip canpicker-main.zip
+  ```
+* Change the directory
+  ```bash
+  cd canpicker-main
   ```
 * Install the dependencies
   ```bash
-  pip3 install -r requirements.txt
+  pipenv install
   ```
 
 ### Cron Job
@@ -64,16 +61,16 @@
 To collect the data every *x* minutes, it's necessary to create a cron job. This is an example to query the data every two minutes:
 
 ```
-*/2 * * * * /home/pi/sepicker/bin/sepicker
+*/2 * * * * /home/pi/canpicker-main/bin/canpicker
 ```
 
 ### Database
 
-Execute the [seed file](./sepicker/resources/datastore/seed.sql) via MySQL command line or copy the query into your MySQL shell.
+Execute the [seed file](./canpicker/resources/datastore/seed.sql) via MySQL command line or copy the query into your MySQL shell.
 
 ### Grafana *(optional)*
 
-With [Grafana](https://grafana.com/) you can create your own dashboard with widgets or use the existing [template](./sepicker/resources/dashboard/grafana.json).
+With [Grafana](https://grafana.com/) you can create your own dashboard with widgets or use the existing [template](./canpicker/resources/dashboard/grafana.json).
 
 ## Config
 
@@ -147,7 +144,11 @@ DB_PASSWORD=
 * http://juerg5524.ch/list_data.php
 * https://github.com/andig/goelster
 * https://github.com/Andy2003/heat-pump-api
+* https://github.com/danielbayerlein/sepicker
 
 ## License
 
-Copyright (c) 2020-present Daniel Bayerlein. See [LICENSE](./LICENSE) for details.
+© 2020-present Daniel Bayerlein
+© 2023-present Franz Knipp
+
+See [LICENSE](./LICENSE) for details.
