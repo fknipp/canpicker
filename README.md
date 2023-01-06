@@ -174,6 +174,7 @@ CONSOLE_OUT=1
 * https://github.com/andig/goelster
 * https://github.com/Andy2003/heat-pump-api
 * https://github.com/danielbayerlein/sepicker
+* Integration with Loxone: https://github.com/fknipp/python-can-loxone-heating-integration
 
 ## License
 
