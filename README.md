@@ -11,7 +11,7 @@
 * [Requirements](#requirements)
 * [Installation](#installation)
   * [Cron Job](#cron-job)
-  * [Database](#database)
+  * [Database <em>(optional)</em>](#database-optional)
   * [Grafana <em>(optional)</em>](#grafana-optional)
 * [Config](#config)
   * [CAN bus](#can-bus)
@@ -20,7 +20,11 @@
   * [Data](#data)
     * [Example](#example-1)
     * [Description](#description-1)
-  * [Database](#database-1)
+  * [Datasinks](#datasinks)
+    * [Configuration File](#configuration-file)
+    * [Storing Data to MySQL](#storing-data-to-mysql)
+    * [Sending Data to an HTTP Endpoint](#sending-data-to-an-http-endpoint)
+    * [Output to the Console](#output-to-the-console)
 * [Resources](#resources)
 * [License](#license)
 
@@ -129,7 +133,7 @@ File: [.env](./.env.example)
 Rename the `.env.example` file to `.env` and adapt it for your needs.
 Otherwise create it with the content for your usecase.
 
-#### Storing data to MySQL
+#### Storing Data to MySQL
 
 Tha values are stored in the table **sepicker**. See the [seed file](./canpicker/resources/datastore/seed.sql) for the data definition.
 
@@ -140,7 +144,7 @@ DB_USER=root
 DB_PASSWORD=
 ```
 
-#### Sending the data to an HTTP endpoint
+#### Sending Data to an HTTP Endpoint
 
 The data is sent as GET request to a configurable URL.
 
@@ -156,7 +160,9 @@ HTTP_USERNAME=
 HTTP_PASSWORD=
 ```
 
-#### Output to the console (helpful for debugging)
+#### Output to the Console
+
+This is helpful for debugging.
 
 ```
 CONSOLE_OUT=1
@@ -171,7 +177,7 @@ CONSOLE_OUT=1
 
 ## License
 
-© 2020-present Daniel Bayerlein
+© 2020-present Daniel Bayerlein  
 © 2023-present Franz Knipp
 
 See [LICENSE](./LICENSE) for details.
