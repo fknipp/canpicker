@@ -27,7 +27,7 @@
 ## Requirements
 
 * [Python 3.9](https://www.python.org)
-* [MySQL](https://www.mysql.com/)
+* [MySQL](https://www.mysql.com/) *(optional)*
 * [Grafana](https://grafana.com/) *(optional)*
 * [Raspberry Pi](https://www.raspberrypi.org) + [CANable](https://canable.io) *(or similar devices)*
 
@@ -58,7 +58,7 @@ To collect the data every *x* minutes, it's necessary to create a cron job. This
 */2 * * * * /home/pi/canpicker-main/bin/canpicker
 ```
 
-### Database
+### Database *(optional)*
 
 Execute the [seed file](./canpicker/resources/datastore/seed.sql) via MySQL command line or copy the query into your MySQL shell.
 
@@ -120,17 +120,46 @@ data:
   * `mil_val`
   * `little_endian`
 
-### Database
+### Datasinks
+
+#### Configuration File
 
 File: [.env](./.env.example)
 
-Rename the `.env.example` file to `.env` or create it with the following content:
+Rename the `.env.example` file to `.env` and adapt it for your needs.
+Otherwise create it with the content for your usecase.
+
+#### Storing data to MySQL
+
+Tha values are stored in the table **sepicker**. See the [seed file](./canpicker/resources/datastore/seed.sql) for the data definition.
 
 ```
 DB_DATABASE=heat-pump
 DB_HOST=127.0.0.1
 DB_USER=root
 DB_PASSWORD=
+```
+
+#### Sending the data to an HTTP endpoint
+
+The data is sent as GET request to a configurable URL.
+
+The URL template allows the substitutions:
+
+* *$timestamp* for the timestamp in the ISO format
+* *$name* for the name as configured in [config.yml](./config.yml)
+* *$value* for the value retrieved on the CAN bus
+
+```
+HTTP_URL_TEMPLATE=http://loxone.local/dev/sps/io/$name/$value
+HTTP_USERNAME=
+HTTP_PASSWORD=
+```
+
+#### Output to the console (helpful for debugging)
+
+```
+CONSOLE_OUT=1
 ```
 
 ## Resources
